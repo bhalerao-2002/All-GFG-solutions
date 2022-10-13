@@ -1,0 +1,15 @@
+class Solution
+{
+   public:
+    int findSum(int A[], int N)
+    {    int x = *min_element(A, A+N);
+
+     int y= *max_element(A, A+N);
+
+     int sum = x+y;
+
+     return sum;
+    	//Thanks to bhalerao-2002
+    }
+
+};
