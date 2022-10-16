@@ -1,0 +1,16 @@
+class Solution{
+public:
+    ListNode *moveToFront(ListNode *head){ if(head == NULL) return NULL;
+        if(head->next == NULL) return head;
+        ListNode* node = head;
+        while(node->next->next){
+            node = node->next;
+        }
+        ListNode* last = node->next;
+        node->next = NULL;
+        last->next = head;
+        head = last;
+        return head;
+        
+    }
+};
