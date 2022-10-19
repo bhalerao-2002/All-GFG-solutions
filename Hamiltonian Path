@@ -1,0 +1,39 @@
+ bool dfs(vector<int>adj[],vector<int>&vis,int s,int i){
+        if(i>=vis.size()){
+               for(int j=0;j<vis.size();j++){
+                 if(vis[j]==0){
+                   return false;
+                 }
+              }
+             return true; 
+        }
+        for(int next:adj[s]){
+            if(vis[next]==0){
+                vis[next]=1;
+                if(dfs(adj,vis,next,i+1)){
+                    return true;
+                }
+                vis[next]=0;
+            }
+        }
+        return false;
+    }
+    bool check(int N,int M,vector<vector<int>> Edges)
+    {
+        // code here
+        vector<int>adj[N];
+        for(int i=0;i<M;i++){
+            int u=Edges[i][0]-1;
+            int v=Edges[i][1]-1;
+            adj[u].push_back(v);
+            adj[v].push_back(u);
+        }
+      for(int s=0;s<N;s++){
+          vector<int>vis(N,0);
+            vis[s]=true;
+           if (dfs(adj,vis,s,1)){
+               return true;
+           }
+      }
+      return false;
+    }
