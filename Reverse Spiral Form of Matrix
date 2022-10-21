@@ -1,0 +1,49 @@
+class Solution
+{
+    public int[] reverseSpiral(int R, int C, int[][] a)
+    {int k=R*C-1;
+        int ans[]=new int[R*C];
+        
+        int col_left=0;
+        int col_right=C-1;
+        int row_top=0;
+        int row_bottom=R-1;
+        
+        while(k>=0){
+            
+            for(int i=col_left;i<=col_right;i++){
+                ans[k--]=a[row_top][i];
+            }
+            row_top++;
+            
+            if(k==-1) break;
+            
+            for(int i=row_top;i<=row_bottom;i++){
+                ans[k--]=a[i][col_right];
+            }
+            col_right--;
+            
+            if(k==-1) break;
+            
+            for(int i=col_right;i>=col_left;i--){
+                ans[k--]=a[row_bottom][i];
+            }
+            
+            row_bottom--;
+            
+            if(k==-1) break;
+            
+            for(int i=row_bottom;i>=row_top;i--){
+                ans[k--]=a[i][col_left];
+            }
+            
+            col_left++;
+            
+            if(k==-1) break;
+            
+        }
+        
+        return ans;
+        // code here
+    }
+}
