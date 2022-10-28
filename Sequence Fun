@@ -1,0 +1,10 @@
+const int M = 1e9+7;
+class Solution {
+	public:
+		int NthTerm(int n){ if(n==1)return 2;
+		    long long prev = NthTerm(n-1)%M;
+		    return (prev*1LL*n+1)%M;
+		    // Thanks to Bhalerao-2002
+		}
+
+};
