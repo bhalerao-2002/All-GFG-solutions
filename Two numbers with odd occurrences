@@ -1,0 +1,59 @@
+class Solution{
+    public:
+    vector<long long int> twoOddNum(long long int Arr[], long long int N)  
+    { long long int temp = 0 , temp2 = 0 , l = pow( 2 , 32 );
+
+        
+
+        for( long long int i = 0 ; i  < N ; i++ ){
+
+            temp ^= Arr[i] ;
+
+        }
+
+        
+
+        // Here l is 2 ^ 32 
+
+        for( int v = 1  ; v <= l  ; v *= 2 ){ 
+
+            int c = 0 ;
+
+            temp2 = 0 ;
+
+            for( int i = 0 ; i < N ; i++ ){
+
+                if( v & Arr[i] ){
+
+                    c++ ;
+
+                    temp2 ^= Arr[i] ;
+
+                }
+
+            }
+
+            
+
+            // if we find any combination where numbers are odd
+
+            if( c % 2 ){
+
+                vector<long long int > vec = { temp2 , temp2^temp } ;
+
+                sort(vec.begin() , vec.end()  , greater<long long int>() ) ;
+
+                return vec ;
+
+            }
+
+        }
+
+        
+
+        // if Not found
+
+        return {-1} ;
+        // code here
+    }
+};
