@@ -1,0 +1,7 @@
+class Solution {
+  public:
+    int noOfOpenDoors(long long N) {
+        return sqrt(N);
+        // Thanks to Bhalerao-2002
+    }
+};
