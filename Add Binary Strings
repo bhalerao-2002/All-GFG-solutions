@@ -1,0 +1,44 @@
+class Solution{int it(char ch) {return ch-'0';}
+public:	
+	string addBinary(string A, string B)
+	{
+	    // your code here
+	    string ans="";
+	    int carry=0;
+	    int i=A.length()-1,j=B.length()-1;
+	    int lim1=0,lim2=0;
+	    while(A[lim1]=='0') lim1++;
+	    while(B[lim2]=='0') lim2++;
+	    while(i>=lim1&&j>=lim2){
+	        int a=it(A[i--])+it(B[j--])+carry;
+	        if(a==1||a==3){
+	          ans.push_back('1');   
+	        }
+	        else ans.push_back('0');
+	        if(a==2||a==3) carry=1;
+	        else carry =0;
+	    }
+	    while(i>=lim1){
+	        int a=it(A[i--])+carry;
+	        if(a==1||a==3){
+	          ans.push_back('1');   
+	        }
+	        else ans.push_back('0');
+	        if(a==2||a==3) carry=1;
+	        else carry =0;
+	    }
+	    while(j>=lim2){
+	        int a=it(B[j--])+carry;
+	        if(a==1||a==3){
+	          ans.push_back('1');   
+	        }
+	        else ans.push_back('0');
+	        if(a==2||a==3) carry=1;
+	        else carry =0;
+	    }
+	    if(carry) ans.push_back('1');
+	    reverse(ans.begin(),ans.end());
+	    return ans;
+	    //Thanks to Bhalerao-2002
+	}
+};
