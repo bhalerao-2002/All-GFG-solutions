@@ -1,0 +1,33 @@
+class Solution{
+    public:
+    // This function wants you to modify the given input
+    // array and no need to return anything
+    // arr: input array
+    // n: size of array
+    //Function to rearrange  the array elements alternately.
+    void rearrange(long long *arr, int n) 
+    { 
+    	 int i,j,k;
+       int maxi=arr[n-1]+1;//+1 is done to make it as > maximum value in the array
+       j=n-1;
+        // 1st iteration
+       for(i=0;i<n;i+=2)
+       {
+           arr[i]=arr[i]+(arr[j]%maxi)*maxi;
+           j--;
+       }
+       j=0;
+       //2nd iteration
+       for(i=1;i<n;i+=2)
+       {
+           arr[i]=arr[i]+(arr[j++]%maxi)*maxi;
+       }
+       
+       for(i=0;i<n;i++)
+       {
+           arr[i]/=maxi;
+       }
+    	//Thanks to Bhalerao-2002
+    	 
+    }
+};
