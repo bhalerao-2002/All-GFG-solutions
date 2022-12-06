@@ -1,0 +1,40 @@
+class Solution 
+{
+    public:
+    //Function to find distance of nearest 1 in the grid for each cell.
+	vector<vector<int>>nearest(vector<vector<int>>grid)
+	{
+	    int n=grid.size();
+	    int m=grid[0].size();
+	    vector<vector<int>>vis(n,vector<int>(m,0));
+	    vector<vector<int>>dist(n,vector<int>(m,0));
+	    queue<pair<pair<int,int>,int>>q;
+	    for(int i=0;i<n;i++){
+	        for(int j=0;j<m;j++){
+	            if(grid[i][j]==1){
+	                q.push({{i,j},0});
+	                vis[i][j]=1;
+	            }else vis[i][j]=0;
+	        }
+	    }
+	    int dx[]={-1,1,0,0};
+         int dy[]={0,0,-1,1};
+	    while(!q.empty()){
+	        int x=q.front().first.first;
+	        int y=q.front().first.second;
+	        int step=q.front().second;
+	        q.pop();
+	        dist[x][y]=step;
+	         for(int j=0;j<4;j++){
+             int nx=x+dx[j];
+             int ny=y+dy[j];
+             if(nx<n && ny<m && nx>=0 && ny>=0 && vis[nx][ny]==0){
+                 vis[nx][ny]=1;
+              q.push({{nx,ny},step+1});
+             }
+	         }
+	    }
+	  return dist;
+	    // Thanks to Bhalerao-2002
+	}
+};
