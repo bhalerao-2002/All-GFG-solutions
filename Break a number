@@ -1,0 +1,9 @@
+class Solution{   
+public:
+    int waysToBreakNumber(int N){ long long mod_val = 1e9 + 7;
+        int ans = (((long long)(N + 1) * (long long)(N + 2))/2) % mod_val;
+        
+        return ans;
+        // Thanks to Bhalerao-2002
+    }
+};
