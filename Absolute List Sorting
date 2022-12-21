@@ -1,0 +1,38 @@
+class Solution{
+    
+public:
+    Node* sortList(Node* head)
+    { vector<int>v;
+
+        Node *temp=head;
+
+        Node *temp1=head;
+
+        while(head!=NULL){
+
+            v.push_back(head->data); //pushing value to vector
+
+            head=head->next;
+
+        }
+
+        sort(v.begin(),v.end());
+
+        int i=0;
+
+        while(temp1!=NULL){ //updating new value at each address...
+
+            temp1->data=v[i]; // by this address remains same by value updated at same adress location
+
+            i++;
+
+            temp1=temp1->next;
+
+        }
+
+        return temp; //returning the initial address
+
+
+        // Thanks to Bhalerao_2002
+    }
+};
