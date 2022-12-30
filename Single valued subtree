@@ -1,0 +1,62 @@
+class Solution
+{
+    public:
+    int ans = 0 ;
+    pair<int, bool> cal(Node* root){
+        if(root==NULL)
+        return {-1, true };
+        // if(root->left==NULL || root->right==NULL)
+        // return {root->data, true } ;
+        
+        pair<int, bool > l = cal(root->left) ;
+        pair<int, bool> r =cal(root->right) ;
+        
+        if(l.first==-1 && r.first==-1)
+        {
+            ans++ ;
+            return {root->data ,true } ;
+        }
+        else if((l.first==-1 && r.first!=-1) || (l.first!=-1 && r.first==-1))
+        {
+            if(l.first==-1)
+            {
+                if(root->data==r.first && (l.second&r.second))
+                {
+                    ans++ ;
+                    return {root->data ,true } ;
+                }
+                else
+                return {root->data, false };
+                
+            }
+            else
+            {
+                 if(root->data==l.first && (l.second&r.second))
+                {
+                    ans++ ;
+                    return {root->data ,true } ;
+                }
+                else
+                return {root->data, false }; 
+            }
+        }
+        else
+        {
+            if(root->data == l.first && root->data==r.first && (l.second&r.second))
+            {
+                ans++ ;
+                return {root->data ,true};
+            }
+            else
+            return {root->data, false };
+        }
+        return {-1 ,true }; 
+    }
+    int singlevalued(Node *root)
+    {
+        // Thanks to Bhalerao-2002
+        cal(root) ;
+        return ans ;
+    }
+    
+};
