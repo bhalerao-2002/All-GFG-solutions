@@ -1,0 +1,34 @@
+class Solution {
+  public:
+    int removeStudents(int H[], int N) {vector<int> temp ;
+
+        temp.push_back(H[0]);
+
+        int len = 1 ;
+
+        
+
+        for(int i= 1 ; i < N ; i++){
+
+            if(H[i] > temp.back()){
+
+                temp.push_back(H[i]) ;
+
+                len++ ;
+
+            }
+
+            else{
+
+                int ind = lower_bound(temp.begin(),temp.end(),H[i]) - temp.begin() ;
+
+                temp[ind] = H[i] ;
+
+            }
+
+        }
+
+        return N - len ;
+        // Thanks to Bhalerao-2002
+    }
+};
