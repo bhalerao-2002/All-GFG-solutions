@@ -1,0 +1,33 @@
+class Solution
+{
+public:
+    string longestString(vector<string> &words)
+    {string ans;
+        unordered_map<string,int>m;
+        sort(words.begin(),words.end());
+        
+        for(int i=0; i<words.size(); i++)
+        {
+            m[words[i]]++;
+        }
+        
+        for(int i=0; i<words.size(); i++)
+        {
+            string str;
+            int cnt=0;
+            
+            for(int j=0; j<words[i].size(); j++)
+            {
+                str.push_back(words[i][j]);
+                
+                if(m[str]) cnt++;
+            }
+            if(cnt==str.length() && cnt > ans.length())
+            {
+                ans= words[i];
+            }
+        }
+        return ans;
+        // Thanks to Bhalerao-2002
+    }
+};
