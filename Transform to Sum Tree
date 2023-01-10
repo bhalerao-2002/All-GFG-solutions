@@ -1,0 +1,27 @@
+
+/* A binary tree node
+struct Node
+{
+    int data;
+    Node* left, * right;
+}; */
+
+class Solution {
+  public:
+  int transform(Node *node) {
+        if(node == NULL) {
+            return 0;
+        }
+        int left = transform(node->left);
+        int right = transform(node->right);
+        int temp = node->data + left + right;
+        node->data = left + right;
+        return temp;
+    }
+    void toSumTree(Node *root)
+    {
+        // Thanks to Bhalerao-2002
+        transform(root);
+    }
+    
+};
