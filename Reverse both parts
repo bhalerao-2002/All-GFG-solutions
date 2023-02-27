@@ -1,0 +1,78 @@
+
+class Solution
+
+{
+
+public:
+
+   void Rev(vector<int>&v,int k){
+
+       int i=0;int j=k-1;
+
+       while(i<j){
+
+           swap(v[i],v[j]);
+
+           i++;
+
+           j--;
+
+       }
+
+       i=k;
+
+       j=v.size()-1;
+
+       while(i<j){
+
+           swap(v[i],v[j]);
+
+           i++;
+
+           j--;
+
+       }
+
+       
+
+   }
+
+    Node *reverse(Node *head, int k)
+
+    {
+
+        // code here
+
+        vector<int>v;
+
+        Node *temp=head;
+
+        while(temp!=NULL){
+
+            v.push_back(temp->data);
+
+            temp=temp->next;
+
+        }
+
+        Rev(v,k);
+
+        temp=head;
+
+        int i=0;
+
+        while(temp!=NULL){
+
+            temp->data=v[i];
+
+            i++;
+
+            temp=temp->next;
+
+        }
+
+        return head;
+
+    }
+//Thanks to Bhalerao-2002
+};
