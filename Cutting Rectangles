@@ -1,0 +1,14 @@
+
+class Solution{
+public:
+    vector<long long int> minimumSquares(long long int L, long long int B)
+    {
+        // Thanks to bhalerao-2002
+          long long int n=1;
+        long long int k=1;
+        k=__gcd(L, B);
+        n=(L*B)/(k*k);
+        return {n,k};
+        
+    }
+};
