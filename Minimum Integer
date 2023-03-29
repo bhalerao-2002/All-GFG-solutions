@@ -1,0 +1,21 @@
+class Solution {
+  public:
+    int minimumInteger(int n, vector<int> &arr) {
+        // Thanks to Bhalerao-2002
+        long sum=0;
+        for(int i=0;i<n;i++)
+        {
+            sum+=arr[i];
+        }
+        int res=INT_MAX;
+        for(int i=0;i<n;i++)
+        {
+            if(sum<=(long)n*arr[i])
+            {
+                res=min(arr[i],res);
+                
+            }
+        }
+        return res;
+    }
+};
