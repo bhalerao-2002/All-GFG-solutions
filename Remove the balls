@@ -1,0 +1,20 @@
+
+class Solution {
+  public:
+  //Thanks to Bhalerao-2002
+  int finLength(int N, vector<int> c, vector<int> r) {
+        stack<pair<int,int>>s;
+        pair<int,int>p;
+
+       s.push({c[0],r[0]});
+        for(int i=1;i<N;i++)
+        {
+            p=make_pair(c[i],r[i]);
+            if(!s.empty() && s.top()==p)
+            s.pop();
+            else
+            s.push({c[i],r[i]});
+        }
+        return s.size();
+    }
+};
