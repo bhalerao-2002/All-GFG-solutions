@@ -1,0 +1,17 @@
+class Solution {
+  public: 
+  //Thanks to Bhalerao-2002
+    int totalTime(int n, vector<int> &arr, vector<int> &time) {
+        int ans=-1;
+        vector<int> hash(n,-1);
+        for(auto it:arr)
+        {
+            ans+=1;
+            if(hash[it-1]!=-1&&(ans-hash[it-1])<time[it-1])
+                ans = time[it-1]+hash[it-1];
+            hash[it-1]=ans;
+        }
+        return ans;
+        
+    }
+};
